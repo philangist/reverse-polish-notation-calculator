@@ -14,7 +14,7 @@ class Stack(object):
 
     def pop(self):
         try:
-            return self.values.pop(0)
+            return self.values.pop(-1)
         except IndexError:
             log.exception('Could not pop value from stack')
             return None

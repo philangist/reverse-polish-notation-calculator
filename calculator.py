@@ -1,6 +1,6 @@
 import operator
 
-from .stack import Stack
+from stack import Stack
 
 ADD = "+"
 SUBTRACT = "-"
@@ -48,12 +48,12 @@ class Calculator(object):
         self.stream = stream
         self.stack = Stack()
 
-    def tokenize(self):
+    def _tokenize(self):
         return self.stream.split()
 
     def run_calculator(self):
         literals = []
-        for token in self.tokenize():
+        for token in self._tokenize():
             if token not in OPERATORS:
                 literals.append(float(token))
             else:
@@ -62,3 +62,8 @@ class Calculator(object):
                 literals = [value]
 
         return literals[0]
+
+    @classmethod
+    def calculate(cls, stream):
+        calculcator = cls(stream)
+        return calculcator.run_calculator()
