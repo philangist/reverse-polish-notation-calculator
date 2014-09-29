@@ -1,5 +1,25 @@
+## About
 Python implementation of a stack machine
 
+## Usage
+
+```python
+from calculator import Calculator
+
+stream = (
+    "1 2 + "
+    "3 4 5 6 * "
+    "1 2 + 3 * "
+)
+
+Calculator(stream).run_calculator()  # 3249.0
+
+```
+
+## Tests
+Soon..
+
+## License
 The MIT License (MIT)
 
 Copyright (c) 2014 Phil Opaola
