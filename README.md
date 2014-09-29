@@ -6,7 +6,7 @@ Python implementation of a stack machine
 ## Usage
 
 ```python
-from calculator import Calculator
+from polish.calculator import Calculator
 
 stream = (
     "1 2 + "
@@ -14,14 +14,14 @@ stream = (
     "1 2 + 3 * "
 )
 
-Calculator().calculate(stream)  # 3249.0
+Calculator.calculate(stream)  # 3249.0
 
 ```
 
 ## Tests
 Running the tests is simple. Just type the following into your favorite *nix shell:
 ```bash
-$ python -m tests
+$ python -m tests.tests
 ```
 
 ### License

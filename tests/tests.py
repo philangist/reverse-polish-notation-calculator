@@ -2,8 +2,8 @@
 
 import unittest
 
-from stack import Stack
-from calculator import Calculator, Expression, ADD
+from polish.stack import Stack
+from polish.calculator import Calculator, Expression, ADD
 
 
 class TestStack(unittest.TestCase):
