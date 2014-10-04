@@ -51,17 +51,30 @@ class Calculator(object):
     def _tokenize(self):
         return self.stream.split()
 
-    def run_calculator(self):
+    def _read_stack_literals(self):
         literals = []
+        next_value = self.stack.peek()
+        while next_value:
+            if (next_value is None) or next_value in OPERATORS:
+                break
+            literals.append(self.stack.pop())
+            next_value = self.stack.peek()
+
+        # Stack output is LIFO but to preserve order of operations we want FIFO
+        literals.reverse()
+        return literals
+
+    def run_calculator(self):
         for token in self._tokenize():
             if token not in OPERATORS:
-                literals.append(float(token))
+                self.stack.push(float(token))
             else:
+                literals = self._read_stack_literals()
                 expression = Expression(operator=token, literals=literals)
                 value = expression.evaluate()
-                literals = [value]
+                self.stack.push(value)
 
-        return literals[0]
+        return self.stack.pop()
 
     @classmethod
     def calculate(cls, stream):

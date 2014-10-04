@@ -18,3 +18,9 @@ class Stack(object):
         except IndexError:
             log.exception('Could not pop value from stack')
             return None
+
+    def peek(self):
+        value = self.pop()
+        if value is not None:
+            self.push(value)
+        return value
